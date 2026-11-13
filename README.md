@@ -1,10 +1,10 @@
-<div align="center">
+﻿<div align="center">
 
-# 🚢 Hamburg Port | Live Vessel Monitoring
+# ðŸš¢ Hamburg Port | Live Vessel Monitoring
 
 **An end-to-end real-time data streaming project using live AIS vessel reports.**
 
-From maritime events to an interactive monitoring dashboard — powered by Python, Apache Kafka, Apache Spark, SQLite, and Streamlit.
+From maritime events to an interactive monitoring dashboard â€” powered by Python, Apache Kafka, Apache Spark, SQLite, and Streamlit.
 
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
 ![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-Streaming-231F20?logo=apachekafka&logoColor=white)
@@ -61,14 +61,14 @@ flowchart LR
 
 ```text
 hamburg-port-monitor/
-├── kafka_producer.py       # Receive live AIS data and publish to Kafka
-├── spark_stream.py         # Stream processing and SQLite writes
-├── dashboard.py            # Streamlit monitoring dashboard
-├── docker-compose.yml      # Local Kafka service
-├── check_latency.py        # Processing-latency measurement
-├── .env.example            # API-key configuration template (safe to share)
-├── .gitignore              # Keeps local data and secrets out of Git
-└── README.md
+â”œâ”€â”€ kafka_producer.py       # Receive live AIS data and publish to Kafka
+â”œâ”€â”€ spark_stream.py         # Stream processing and SQLite writes
+â”œâ”€â”€ dashboard.py            # Streamlit monitoring dashboard
+â”œâ”€â”€ docker-compose.yml      # Local Kafka service
+â”œâ”€â”€ check_latency.py        # Processing-latency measurement
+â”œâ”€â”€ .env.example            # API-key configuration template (safe to share)
+â”œâ”€â”€ .gitignore              # Keeps local data and secrets out of Git
+â””â”€â”€ README.md
 ```
 
 Additional local files, including `.env`, `.venv/`, `vessels.db`, and `spark-checkpoint/`, are intentionally **not** committed.
@@ -144,12 +144,27 @@ The table below reports measurements from specific local tests; these are **not*
 | Observed incoming throughput | **1.0 report/s** | 60 reports collected over 60 seconds |
 | Spark restart and catch-up | **167 / 167 recovered** | Reports received by Kafka during a controlled Spark interruption |
 | Duplicate protection | **Passed** | Two deliberately repeated test observations resulted in one stored observation |
-| 20% increased-load test | **Pending** | Not yet measured |
+| 20% increased-load test | **Completed (with timing limitation)** | 132/132 reports saved successfully |
 
 **Latency definition:** This project measures the elapsed time from when the Python producer receives a report to when Spark assigns the SQLite save timestamp. It does not measure ship-to-AISStream transmission latency or exact disk-commit duration.
 
 **Recovery scope:** During the tested interruption, Kafka stayed available and retained the incoming reports. Recovering messages depends on Kafka retention and the Spark checkpoint. Reports missed while the AIS source or producer itself is disconnected are not automatically recovered.
 
+
+### 20% Increased-Load Test Results
+
+The load test was executed using recorded AIS observations, an isolated Kafka topic, Apache Spark, and a separate SQLite database.
+
+| Metric | Baseline | Increased-load phase |
+|---|---:|---:|
+| Reports sent | 60 | 72 |
+| Reports saved | 60 | 72 |
+| Target rate | 1.0/sec | 1.2/sec |
+| Actual rate | 1.000/sec | 0.217/sec |
+| Average latency | 1.323 s | 22.364 s |
+| P95 latency | 2.765 s | 146.254 s |
+
+**Result:** The test execution is complete, with 132/132 reports successfully stored (100% delivery). However, laptop interruption affected the increased-load phase, so its intended 1.2 reports/second performance was not verified. An uninterrupted rerun is needed to validate the performance target.
 ## Design Decisions and Limitations
 
 - **Kafka** separates data ingestion from downstream processing and supports catch-up after a consumer interruption.
@@ -169,4 +184,5 @@ AI assistance was used during code development, debugging, testing guidance, and
 
 ---
 
-<div align="center"><sub>Built as a university real-time data engineering project • Hamburg, Germany</sub></div>
+<div align="center"><sub>Built as a university real-time data engineering project â€¢ Hamburg, Germany</sub></div>
+
