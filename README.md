@@ -1,10 +1,10 @@
-﻿<div align="center">
+<div align="center">
 
-# ðŸš¢ Hamburg Port | Live Vessel Monitoring
+# 🚢 Hamburg Port | Live Vessel Monitoring
 
 **An end-to-end real-time data streaming project using live AIS vessel reports.**
 
-From maritime events to an interactive monitoring dashboard â€” powered by Python, Apache Kafka, Apache Spark, SQLite, and Streamlit.
+From maritime events to an interactive monitoring dashboard — powered by Python, Apache Kafka, Apache Spark, SQLite, and Streamlit.
 
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
 ![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-Streaming-231F20?logo=apachekafka&logoColor=white)
@@ -61,14 +61,14 @@ flowchart LR
 
 ```text
 hamburg-port-monitor/
-â”œâ”€â”€ kafka_producer.py       # Receive live AIS data and publish to Kafka
-â”œâ”€â”€ spark_stream.py         # Stream processing and SQLite writes
-â”œâ”€â”€ dashboard.py            # Streamlit monitoring dashboard
-â”œâ”€â”€ docker-compose.yml      # Local Kafka service
-â”œâ”€â”€ check_latency.py        # Processing-latency measurement
-â”œâ”€â”€ .env.example            # API-key configuration template (safe to share)
-â”œâ”€â”€ .gitignore              # Keeps local data and secrets out of Git
-â””â”€â”€ README.md
+├── kafka_producer.py       # Receive live AIS data and publish to Kafka
+├── spark_stream.py         # Stream processing and SQLite writes
+├── dashboard.py            # Streamlit monitoring dashboard
+├── docker-compose.yml      # Local Kafka service
+├── check_latency.py        # Processing-latency measurement
+├── .env.example            # API-key configuration template (safe to share)
+├── .gitignore              # Keeps local data and secrets out of Git
+└── README.md
 ```
 
 Additional local files, including `.env`, `.venv/`, `vessels.db`, and `spark-checkpoint/`, are intentionally **not** committed.
@@ -184,5 +184,5 @@ AI assistance was used during code development, debugging, testing guidance, and
 
 ---
 
-<div align="center"><sub>Built as a university real-time data engineering project â€¢ Hamburg, Germany</sub></div>
+<div align="center"><sub>Built as a university real-time data engineering project • Hamburg, Germany</sub></div>
 
