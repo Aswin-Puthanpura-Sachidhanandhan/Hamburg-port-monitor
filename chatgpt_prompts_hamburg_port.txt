@@ -1,0 +1,31 @@
+Can you help me write a simple Python script to connect to AISStream and receive live ship data?
+
+I'm getting the AIS data, but I don't understand the JSON structure. How do I extract the ship name, MMSI, location and speed?
+
+Can you explain this code line by line? I want to understand what each part is doing.
+
+How do I send the data from my Python script to Kafka?
+
+Where does Kafka store the data? Is it on my laptop or in the cloud? And what is its limit?
+
+My AISStream connection sometimes stops. so Can you help me make the code reconnect automatically? so i would not have to reconnect it everytime it disconnects.
+
+Help me write the Spark code to read the vessel data from Kafka and save it into SQLite.
+
+I'm getting an error when running Spark using Docker. Can you help me figure out what's wrong?
+
+How can we prevent the same ship report from getting saved twice? Do we need to change the code? like a deduplication..
+
+Can you help me create a Streamlit dashboard with a map, vessel count and speed alerts?
+
+The dashboard is working, but I don't understand how some of these numbers are calculated. Can you explain the logic?
+
+How can I measure the delay between receiving the AIS data and saving it in the database?
+
+If I stop Spark while Kafka is still receiving data, how can I check whether Spark processes the missed messages after restarting?
+
+Can you simplify my existing code without removing the important features? I want to understand and explain it easily.
+
+My professor asked for a 20% increased-load test. What does it mean, and how can we test it?
+
+Help me create a GitHub README that explains the code, the architecture and the tests we performed.
